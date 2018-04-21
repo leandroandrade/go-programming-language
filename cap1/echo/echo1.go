@@ -4,7 +4,7 @@ import (
 	"os"
 	"fmt"
 )
-
+//agrupa os argumentos informados em Program arguments
 func main() {
 	var s, step string
 	for i := 1; i < len(os.Args); i++ {

@@ -6,6 +6,7 @@ import (
 	"fmt"
 )
 
+//conta a quantidade de linhas repetidas em um arquivo ou informada como argumento
 func main() {
 	counts := make(map[string]int)
 	files := os.Args[1:]

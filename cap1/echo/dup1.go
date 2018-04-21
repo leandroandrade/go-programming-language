@@ -6,6 +6,7 @@ import (
 	"fmt"
 )
 
+// conta a quantidade de linhas repetidas.
 func main() {
 	counts := make(map[string]int)
 	input := bufio.NewScanner(os.Stdin)
