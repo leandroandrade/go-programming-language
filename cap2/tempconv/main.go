@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/leandroandrade/go-programming-language/cap2/tempconv"
+	"github.com/leandroandrade/go-programming-language/cap2/tempconv/base"
 )
 
 func init() {
