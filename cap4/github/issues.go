@@ -54,6 +54,10 @@ func SearchIssues(terms []string) (*IssuesSearchResult, error) {
 	return &result, nil
 }
 
+func formatDate(item time.Time) string {
+	return item.Format("02/01/2006")
+}
+
 func main() {
 	result, err := SearchIssues(os.Args[1:])
 	if err != nil {
@@ -62,6 +66,17 @@ func main() {
 
 	fmt.Printf("%d issues:\n", result.TotalCount)
 	for _, item := range result.Items {
-		fmt.Printf("#%-5d %9.9s %.55s\n", item.Number, item.User.Login, item.Title)
+		var day string
+
+		if int(time.Since(item.CreatedAt).Hours()/24) == 0 {
+			day = fmt.Sprintf("today %v", formatDate(item.CreatedAt))
+		} else {
+			day = fmt.Sprintf("%d days ago %v", int(time.Since(item.CreatedAt).Hours()/24),
+				formatDate(item.CreatedAt))
+		}
+
+		fmt.Printf("#%-5d %9.9s %22.21s %.55s \n", item.Number, item.User.Login, day,
+			item.Title)
+
 	}
 }
